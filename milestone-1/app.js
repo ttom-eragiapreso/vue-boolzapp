@@ -6,6 +6,8 @@ createApp({
   data(){
     return {
 
+      activeConversation: 0,
+
       contacts: [
         {
           name: "Michele",

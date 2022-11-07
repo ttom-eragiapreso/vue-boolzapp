@@ -170,6 +170,11 @@ main {
   display: flex;
   padding: 5px;
   border-bottom: 1px solid #bababa4c;
+  cursor: pointer;
+}
+
+.conversation-card:hover {
+  background-color: #eceeee;
 }
 
 .conversation-card .round-container {
@@ -191,4 +196,8 @@ main {
 
 .msg-hour {
   margin-left: auto;
+}
+
+.conversation-card.active {
+  background-color: #eceeee;
 }

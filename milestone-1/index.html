@@ -87,7 +87,9 @@
 <div class="conversations">
 
 <div class="conversation-card"
-     v-for="(contact, index) in contacts"      
+     v-for="(contact, index) in contacts"
+     :class="{'active' : index === activeConversation}"
+     @click="activeConversation = index"
 >
 
   <div class="round-container">
