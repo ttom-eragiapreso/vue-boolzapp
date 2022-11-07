@@ -159,11 +159,17 @@ main {
 
 /* Card template della conversation */
 
+.conversations {
+  overflow: auto;
+  min-height: fit-content;
+}
+
 .conversation-card{
   height: 60px;
   background-color: white;
   display: flex;
   padding: 5px;
+  border-bottom: 1px solid #bababa4c;
 }
 
 .conversation-card .round-container {

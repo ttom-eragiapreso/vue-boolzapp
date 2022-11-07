@@ -86,14 +86,16 @@
 <!-- Lista delle conversazioni -->
 <div class="conversations">
 
-<div class="conversation-card">
+<div class="conversation-card"
+     v-for="(contact, index) in contacts"      
+>
 
   <div class="round-container">
-    <img src="../img/avatar_1.jpg" alt="avatar 1">
+    <img :src="'../img/avatar' + contact.avatar + '.jpg'" alt="avatar 1">
   </div>
 
   <div class="user-info">
-    <span class="user-name">Michele</span>
+    <span class="user-name">{{contact.name}}</span>
     <span>Ultimo messaggio inviato</span>
   </div>
 
