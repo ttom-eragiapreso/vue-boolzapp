@@ -40,7 +40,7 @@ main {
 }
 
 .left-content, .right-content {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 100%;
 }
 
@@ -214,6 +214,7 @@ main {
 .msg-container {
   background-image: url(../img/mine.jpg);
   height: calc(100% - 110px);
+  overflow: auto;
 }
 
 .new-message {
@@ -247,6 +248,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 0 5px;
+  background-color: #f5f0edb9;
 }
 
 .new-message input {
@@ -260,4 +262,9 @@ main {
 .emojis, .audio-message {
   padding: 0 15px;
   font-size: 1.2rem;
+  color: #777e8b;
+}
+
+.emojis:hover, .audio-message:hover {
+  color: black;
 }

@@ -190,7 +190,7 @@ createApp({
 
       searchChat: "",
 
-      newMsg: ""
+      newMsg: "",
 
 
     }
@@ -198,14 +198,43 @@ createApp({
 
   methods: {
 
-    addNewMessage(isSent){
-      console.log("Inviato messaggio", this.newMsg)
+    addUserMessage(){
+
+      let userMsg = {
+        date: "07/11/2022 15:00:00",
+        message: this.newMsg,
+        status: 'sent'
+      }
+      
+      this.contacts[this.activeConversation].messages.push(userMsg)
+      
+      
+      this.newMsg = ""
+      this.addAiMessage()
+    },
+    
+    addAiMessage(){
+      
+
+      setTimeout(()=>{
+
+        let aiMsg = {
+          date: "07/11/2022 15:00:00",
+          message: "ok!",
+          status: 'received'
+        }
+  
+        this.contacts[this.activeConversation].messages.push(aiMsg)
+
+      }, 1000)
     }
 
   },
 
   mounted(){
-    console.log("mounted")
+
+    //date: new Date
+
   }
   
 }).mount("#app")
