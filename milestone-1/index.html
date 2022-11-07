@@ -90,6 +90,7 @@
      v-for="(contact, index) in contacts"
      :class="{'active' : index === activeConversation}"
      @click="activeConversation = index"
+     v-show="contact.visible"
 >
 
   <div class="round-container">
@@ -117,6 +118,39 @@
 <!-- Parte destra dell'app -->
 <div class="right-content">
 
+
+
+  <div class="conversation-container" 
+       v-for="(contact, index) in contacts"
+       v-show="index === activeConversation"
+  >
+
+    <div class="user-bar">
+
+    <div class="user">
+  
+      <div class="round-container">
+        <img src="../img/avatar_io.jpg" alt="User Avatar">
+      </div>
+  
+      <div class="user-info">
+        <span class="user-name"></span>
+        <span>Ultimo messaggio inviato</span>
+      </div>
+  
+    </div>
+  
+  
+    <div class="actions">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-paperclip"></i>
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+  
+  </div>
+
+  </div>
+  
 </div>
 
 
