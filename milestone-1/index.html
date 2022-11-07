@@ -130,11 +130,11 @@
     <div class="user">
   
       <div class="round-container">
-        <img src="../img/avatar_io.jpg" alt="User Avatar">
+        <img :src="'../img/avatar' + contact.avatar + '.jpg'" alt="User Avatar">
       </div>
   
       <div class="user-info">
-        <span class="user-name"></span>
+        <span class="user-name">{{contact.name}}</span>
         <span>Ultimo messaggio inviato</span>
       </div>
   
@@ -147,6 +147,25 @@
       <i class="fa-solid fa-ellipsis-vertical"></i>
     </div>
   
+  </div>
+
+
+  <div class="msg-container">
+
+    <div class="msg"
+    v-for="message in contact.messages"
+    >
+      <span :class="[ message.status === 'sent' ? msgSentClass : msgReceivedClass]"
+      
+      >{{message.message}}</span>
+    </div>
+
+
+
+  </div>
+
+  <div class="new-message">
+
   </div>
 
   </div>

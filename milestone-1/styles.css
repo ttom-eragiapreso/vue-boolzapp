@@ -79,6 +79,7 @@ main {
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+  align-self: center;
 }
 
 .actions i {
@@ -199,4 +200,41 @@ main {
 
 .conversation-card.active {
   background-color: #eceeee;
+}
+
+
+
+/* Container dei messaggi */
+
+.conversation-container {
+  height: 100%;
+}
+
+.msg-container {
+  background-image: url(../img/mine.jpg);
+  height: calc(100% - 110px);
+}
+
+.new-message {
+  height: 55px;
+}
+
+.msg{
+  display: flex;
+  padding: 10px 25px;
+}
+
+.msg .sent {
+  margin-left: auto;
+  background: #dafac2;
+}
+
+.msg .received {
+  margin-right: auto;
+  background-color: white;
+}
+
+.msg .sent, .msg .received {
+  padding: 12px;
+  border-radius: 8px;
 }

@@ -7,6 +7,8 @@ createApp({
     return {
 
       activeConversation: 0,
+      msgSentClass: 'sent',
+      msgReceivedClass: 'received',
 
       contacts: [
         {
