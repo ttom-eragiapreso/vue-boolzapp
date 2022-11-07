@@ -188,13 +188,19 @@ createApp({
       ],
 
 
-      searchChat: ""
+      searchChat: "",
+
+      newMsg: ""
 
 
     }
   },
 
   methods: {
+
+    addNewMessage(isSent){
+      console.log("Inviato messaggio", this.newMsg)
+    }
 
   },
 

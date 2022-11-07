@@ -119,12 +119,13 @@
 <div class="right-content">
 
 
-
+  <!-- Tuta la parte destra dell'app viene costantemente monitorata e aggiornata in base alla chat selezionta -->
   <div class="conversation-container" 
        v-for="(contact, index) in contacts"
        v-show="index === activeConversation"
   >
 
+    <!-- Preso in prestito la parte equivalente del lato sinistro, cambiando soltanto le icone -->
     <div class="user-bar">
 
     <div class="user">
@@ -149,9 +150,10 @@
   
   </div>
 
-
+  <!-- Macro contenitore di tutta la conversazione -->
   <div class="msg-container">
 
+    <!-- Il singolo messaggio con dentro lo span che starà a sinistra o a destra in base a se il messaggio è inviato o ricevuto -->
     <div class="msg"
     v-for="message in contact.messages"
     >
@@ -164,8 +166,14 @@
 
   </div>
 
+  <!-- Input per scrivere un nuovo messaggio -->
   <div class="new-message">
 
+    <div class="emojis"><i class="fa-regular fa-face-smile"></i></div>
+    <input type="text" placeholder="Scrivi un messaggio" v-model="newMsg"
+    @keydown.enter="addNewMessage(true)"
+    >
+    <div class="audio-message"><i class="fa-solid fa-microphone"></i></div>
   </div>
 
   </div>
