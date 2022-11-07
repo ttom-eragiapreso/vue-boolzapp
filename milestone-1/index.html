@@ -12,17 +12,85 @@
 </head>
 <body>
   
+<!-- Sections necessarie per mettere i colori di background -->
 <header></header>
 <main></main>
 
+
+<!-- App container su cui montare tutto -->
 <div id="app" class="container">
 
+
+  <!-- Parte sinistra dell'app -->
 <div class="left-content">
 
 
+  <!-- Barra utente -->
+<div class="user-bar">
+
+  <div class="user">
+
+    <div class="round-container">
+      <img src="../img/avatar_io.jpg" alt="User Avatar">
+    </div>
+
+    <div class="avatar-name">Sofia</div>
+
+  </div>
+
+
+  <div class="actions">
+    <i class="fa-solid fa-circle-notch"></i>
+    <i class="fa-solid fa-message"></i>
+    <i class="fa-solid fa-ellipsis-vertical"></i>
+  </div>
+
+</div>
+
+
+<!-- Barra notifications -->
+<div class="notifications">
+
+  <div class="round-container">
+    <i class="fa-regular fa-bell-slash"></i>
+  </div>
+
+  <div class="new-notifications">
+    <h6>Ricevi notifiche di nuovi messaggi</h6>
+    <span>Attiva notifiche desktop</span>
+  </div>
+
+</div>
+
+
+
+
+
+<!-- Barra ricerca chat -->
+<div class="search-bar">
+
+  <div class="label">
+    <label for="search-chat">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </label>
+  </div>
+  
+  <div class="input">
+    <input type="text" v-model="searchChat" id="search-chat" placeholder="Cerca o inizia una nuova chat">
+  </div>
   
 </div>
 
+
+
+
+<div class="conversations"></div>
+
+</div>
+
+
+
+<!-- Parte destra dell'app -->
 <div class="right-content">
 
 </div>

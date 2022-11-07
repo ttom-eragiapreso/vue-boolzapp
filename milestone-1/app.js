@@ -181,7 +181,10 @@ createApp({
 
         
 
-      ]
+      ],
+
+
+      searchChat: ""
 
 
     }
