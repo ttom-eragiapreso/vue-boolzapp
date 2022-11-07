@@ -26,8 +26,22 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 85%;
   height: 90%;
   min-width: 650px;
+  display: flex;
+}
+
+.left-content, .right-content {
+  border: 1px solid black;
+  height: 100%;
+}
+
+.left-content {
+  width: 35%;
+}
+
+.right-content{
+  width: 65%;
 }
