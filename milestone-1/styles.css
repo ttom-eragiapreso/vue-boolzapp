@@ -60,7 +60,7 @@ main {
 .user-bar {
   display: flex;
   justify-content: space-between;
-  height: 65px;
+  height: 55px;
   align-items: center;
   background-color:#ededed;
   padding: 0 5px;
@@ -90,7 +90,7 @@ main {
 /* Barra notifications */
 
 .notifications {
-  height: 65px;
+  height: 55px;
   background-color: #99dffc;
   display: flex;
   align-items: center;
@@ -155,4 +155,34 @@ main {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 0 5px;
+}
+
+/* Card template della conversation */
+
+.conversation-card{
+  height: 60px;
+  background-color: white;
+  display: flex;
+  padding: 5px;
+}
+
+.conversation-card .round-container {
+  align-self: center;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+}
+
+.user-info span:last-child, .msg-hour {
+  color: #bababa;
+  font-size: .7rem;
+  padding-top: 3px;
+}
+
+.msg-hour {
+  margin-left: auto;
 }
