@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  position: relative;
+}
+
+
+
+header {
+  height: 15%;
+  background-color: #01a093;
+}
+
+main {
+  height: 85%;
+  background-color: #dfdfdb;
+}
+
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  width: 85%;
+  height: 90%;
+  min-width: 650px;
+}
