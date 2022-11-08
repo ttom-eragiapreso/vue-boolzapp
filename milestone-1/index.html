@@ -159,11 +159,35 @@
 
     <!-- Il singolo messaggio con dentro lo span che starà a sinistra o a destra in base a se il messaggio è inviato o ricevuto -->
     <div class="msg"
-    v-for="message in contact.messages"
+    v-for="(message, index) in contact.messages"
     >
     <div :class="[ message.status === 'sent' ? msgSentClass : msgReceivedClass]">
           <span class="msg-content">{{message.message}}</span>
-          <span class="time-stamp">{{getOnlyHours(message)}}</span>
+
+          <div class="options">
+            <div class="delete-menu"
+            v-if="message.isOptionsVisible"
+            >
+            <ul>
+              <li>Metti mi piace</li>
+              <li
+              @click="deleteMsg(index)"
+              >Cancella questo messaggio</li>
+            </ul>
+            </div>
+
+            <span class="delete"
+                  @click="message.isOptionsVisible = !message.isOptionsVisible"
+            >
+              <i class="fa-solid fa-chevron-down"
+              v-if="!message.isOptionsVisible"
+              ></i>
+              <i class="fa-solid fa-chevron-up"
+              v-else
+              ></i>
+            </span>
+            <span class="time-stamp">{{getOnlyHours(message)}}</span>
+          </div>
     </div>
      
     </div>

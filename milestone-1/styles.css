@@ -30,6 +30,20 @@ i:hover {
   color: black;
 }
 
+ul {
+  list-style: none;
+}
+
+ul li {
+  text-decoration: none;
+  border-bottom: 1px solid #bababa;
+  padding: 3px 5px;
+}
+
+ul li:hover {
+  background-color: #bababa;
+  cursor: pointer;
+}
 /* Main container position and size */
 .container{
   position: absolute;
@@ -168,8 +182,8 @@ i:hover {
 /* Card template della conversation */
 
 .conversations {
-  /* overflow: auto; */
-  overflow-y: scroll;
+  overflow: auto;
+  /* overflow-y: scroll; */
   height: calc(100% - 140px);
   background-color: white;
   border-bottom-left-radius: 10px;
@@ -264,6 +278,35 @@ i:hover {
 .msg-content {
   align-self: center;
   font-size: .9rem;
+}
+
+.options {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.delete {
+  font-size: .65rem;
+  text-align: right;
+  opacity: 0;
+  padding-bottom: 5px;
+}
+
+.delete:hover {
+  opacity: 1;
+}
+
+.delete-menu {
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.514);
+  width: 120px;
+  padding: 4px 3px;
+  background-color: white;
 }
 
 .time-stamp {
