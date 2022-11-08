@@ -263,6 +263,7 @@ i:hover {
 
 .msg-content {
   align-self: center;
+  font-size: .9rem;
 }
 
 .time-stamp {
