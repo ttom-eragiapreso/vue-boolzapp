@@ -6,10 +6,12 @@ createApp({
   data(){
     return {
 
+      // Indice della conversazione attiva che permette il cambio tipo carousel
       activeConversation: 0,
       msgSentClass: 'sent',
       msgReceivedClass: 'received',
 
+      // Base Dati dei contatti
       contacts: [
         {
           name: "Michele",
