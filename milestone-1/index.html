@@ -157,9 +157,11 @@
     <div class="msg"
     v-for="message in contact.messages"
     >
-      <span :class="[ message.status === 'sent' ? msgSentClass : msgReceivedClass]"
-      
-      >{{message.message}}</span>
+    <div :class="[ message.status === 'sent' ? msgSentClass : msgReceivedClass]">
+          <span class="msg-content">{{message.message}}</span>
+          <span class="time-stamp">{{getOnlyHours(message)}}</span>
+    </div>
+     
     </div>
 
 

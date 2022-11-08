@@ -26,6 +26,9 @@ main {
   background-color: #dfdfdb;
 }
 
+i:hover {
+  color: black;
+}
 
 /* Main container position and size */
 .container{
@@ -63,6 +66,7 @@ main {
   align-items: center;
   background-color:#ededed;
   padding: 0 5px;
+  border-top-left-radius: 10px;
 }
 
 .user {
@@ -85,6 +89,10 @@ main {
 .actions i {
   color: #bababa;
   padding: 0 8px;
+}
+
+.actions i:hover {
+  color: black;
 }
 
 /* Barra notifications */
@@ -160,9 +168,11 @@ main {
 /* Card template della conversation */
 
 .conversations {
-  overflow: auto;
+  /* overflow: auto; */
+  overflow-y: scroll;
   height: calc(100% - 140px);
   background-color: white;
+  border-bottom-left-radius: 10px;
 }
 
 .conversation-card{
@@ -207,6 +217,11 @@ main {
 
 /* Container dei messaggi */
 
+.conversation-container .user-bar {
+  border-top-left-radius: 0;
+  border-top-right-radius: 10px;
+}
+
 .conversation-container {
   height: 100%;
 }
@@ -214,11 +229,13 @@ main {
 .msg-container {
   background-image: url(../img/mine.jpg);
   height: calc(100% - 110px);
-  overflow: auto;
+  /* overflow: auto; */
+  overflow-y: scroll;
 }
 
 .new-message {
   height: 55px;
+  border-bottom-right-radius: 10px;
 }
 
 .msg{
@@ -237,8 +254,22 @@ main {
 }
 
 .msg .sent, .msg .received {
-  padding: 12px;
+  padding: 5px 12px;
   border-radius: 8px;
+  width: 45%;
+  height: 40px;
+  display: flex;
+}
+
+.msg-content {
+  align-self: center;
+}
+
+.time-stamp {
+  font-size: .7rem;
+  margin-left: auto;
+  align-self: flex-end;
+  color: #bababa;
 }
 
 /* Nuovo messaggio */

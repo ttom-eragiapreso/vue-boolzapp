@@ -200,8 +200,13 @@ createApp({
 
     addUserMessage(){
 
+      let today = new Date().getDate()
+      let hours = new Date().getHours()
+      let minutes = new Date().getMinutes()
+
+
       let userMsg = {
-        date: "07/11/2022 15:00:00",
+        date: `${today} ${hours}:${minutes}:00`,
         message: this.newMsg,
         status: 'sent'
       }
@@ -227,14 +232,14 @@ createApp({
         this.contacts[this.activeConversation].messages.push(aiMsg)
 
       }, 1000)
+    },
+
+    getOnlyHours(msg){
+      return msg.date.substring(11, 16)
     }
 
-  },
-
-  mounted(){
-
-    //date: new Date
-
   }
-  
+
+
+
 }).mount("#app")
