@@ -252,6 +252,12 @@ createApp({
       }else {
         this.contacts.forEach(contact => contact.visible = true )
       }
+    },
+
+    getLastMsg(index){
+
+      let sentMsg = this.contacts[index].messages.find(msg => msg.status === 'sent')
+      return sentMsg.message
     }
 
   }

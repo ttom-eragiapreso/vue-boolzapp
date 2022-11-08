@@ -89,6 +89,7 @@
 <!-- Lista delle conversazioni -->
 <div class="conversations">
 
+  
 <div class="conversation-card"
      v-for="(contact, index) in contacts"
      :class="{'active' : index === activeConversation}"
@@ -102,7 +103,7 @@
 
   <div class="user-info">
     <span class="user-name">{{contact.name}}</span>
-    <span>Ultimo messaggio inviato</span>
+    <span>{{getLastMsg(index)}}</span>
   </div>
 
   <div class="msg-hour">
