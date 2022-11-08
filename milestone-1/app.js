@@ -256,8 +256,8 @@ createApp({
 
     getLastMsg(index){
 
-      let sentMsg = this.contacts[index].messages.find(msg => msg.status === 'sent')
-      return sentMsg.message
+      let sentMsg = this.contacts[index].messages.filter(msg => msg.status === 'received')
+      return sentMsg[sentMsg.length -1].message
     }
 
   }
