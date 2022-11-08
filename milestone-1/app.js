@@ -200,20 +200,27 @@ createApp({
 
     addUserMessage(){
 
+      // Ad ogni invio di messaggio mi creo il timestap di quando è stato inviato, facendo i vari check per formattarlo come è formattato nel database
       let today = new Date().getDate()
       let hours = new Date().getHours()
       let minutes = new Date().getMinutes()
+      let month = new Date().getMonth() +1
+      let year = new Date().getFullYear()
 
+      today < 10 ? today = `0${today}` : today = today
+      hours < 10 ? hours = `0${hours}` : hours = hours
+      minutes < 10 ? minutes = `0${minutes}` : minutes = minutes
+      month < 10 ? month = `0${month}` : month = month
 
       let userMsg = {
-        date: `${today} ${hours}:${minutes}:00`,
+        date: `${today}/${month}/${year} ${hours}:${minutes}:00`,
         message: this.newMsg,
         status: 'sent'
       }
       
       this.contacts[this.activeConversation].messages.push(userMsg)
       
-      
+      console.log(userMsg)
       this.newMsg = ""
       this.addAiMessage()
     },
