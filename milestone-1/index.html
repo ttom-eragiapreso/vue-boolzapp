@@ -76,7 +76,10 @@
   </div>
 
   <div class="input">
-    <input type="text" v-model="searchChat" id="search-chat" placeholder="Cerca o inizia una nuova chat">
+    <input type="text" v-model.trim="searchChat" 
+    id="search-chat" 
+    placeholder="Cerca o inizia una nuova chat"
+    :input="searchFilter()">
   </div>
   
 </div>
@@ -136,7 +139,7 @@
   
       <div class="user-info">
         <span class="user-name">{{contact.name}}</span>
-        <span>Ultimo messaggio inviato</span>
+        <span>Ultimo accesso oggi alle 12:00</span>
       </div>
   
     </div>

@@ -187,7 +187,6 @@ createApp({
 
       ],
 
-
       searchChat: "",
 
       newMsg: "",
@@ -243,6 +242,14 @@ createApp({
 
     getOnlyHours(msg){
       return msg.date.substring(11, 16)
+    },
+
+    searchFilter(){
+      if(this.searchChat.length > 0){
+        this.contacts.forEach(contact => contact.name.toLowerCase().includes(this.searchChat) ? contact.visible = true : contact.visible = false)
+      }else {
+        this.contacts.forEach(contact => contact.visible = true )
+      }
     }
 
   }
