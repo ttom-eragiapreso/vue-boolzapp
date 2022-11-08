@@ -188,9 +188,9 @@ createApp({
         
 
       ],
-
+      // Campo di input per la ricerca delle chat
       searchChat: "",
-
+      // Campo di input per ascoltare il nuovo messaggio
       newMsg: "",
 
 
@@ -199,6 +199,7 @@ createApp({
 
   methods: {
 
+    // Funzione per creare ed aggiungere il nuovo messaggio dell'utente
     addUserMessage(){
 
       // Ad ogni invio di messaggio mi creo il timestap di quando è stato inviato, facendo i vari check per formattarlo come è formattato nel database
@@ -221,11 +222,10 @@ createApp({
       
       this.contacts[this.activeConversation].messages.push(userMsg)
       
-      console.log(userMsg)
       this.newMsg = ""
       this.addAiMessage()
     },
-    
+    // Funzione per la risposta automatica dell'AI con setTimeout
     addAiMessage(){
       
 
@@ -241,11 +241,11 @@ createApp({
 
       }, 1000)
     },
-
+    // Funzione utility per estrarre la solamente l'ora ed i minuti dalla formattazione presente nella base dati
     getOnlyHours(msg){
       return msg.date.substring(11, 16)
     },
-
+    // Funzione che filtra le chat in base al campo di input 
     searchFilter(){
       if(this.searchChat.length > 0){
         this.contacts.forEach(contact => contact.name.toLowerCase().includes(this.searchChat) ? contact.visible = true : contact.visible = false)
@@ -253,7 +253,7 @@ createApp({
         this.contacts.forEach(contact => contact.visible = true )
       }
     },
-
+    // Funzione utility per prendere l'ultimo messaggio ricevuto da uno dei contatti per mostrarlo in preview.
     getLastMsg(index){
 
       let sentMsg = this.contacts[index].messages.filter(msg => msg.status === 'received')
