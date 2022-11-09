@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
+  <script src=https://unpkg.com/vue@3></script>
+  <script src="app.js" defer></script>
+  <title>Boolzap</title>
+</head>
+<body>
+  
+<!-- Sections necessarie per mettere i colori di background -->
+<header></header>
+<main></main>
+
+
+<!-- App container su cui montare tutto -->
+<div id="app" class="container">
+
+
+  <!-- Parte sinistra dell'app -->
+<div class="left-content" >
+
+
+  <!-- Barra utente -->
+<div class="user-bar">
+
+  <div class="user">
+
+    <div class="round-container">
+      <img src="../img/avatar_io.jpg" alt="User Avatar">
+    </div>
+
+    <div class="avatar-name">Sofia</div>
+
+  </div>
+
+
+  <div class="actions">
+    <i class="fa-solid fa-circle-notch"></i>
+    <i class="fa-solid fa-message"></i>
+    <i class="fa-solid fa-ellipsis-vertical" @click="isNewContact = !isNewContact"></i>
+
+    <div class="new-contact-container" v-if="isNewContact">
+      <h5>Crea un nuovo contatto</h5>
+      <input type="text" placeholder="Nome del nuovo contatto" v-model="newContactName"
+      @keydown.enter="createNewContact(newContactName)"
+      >
+      <button @click="createNewContact(newContactName)">Crea</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Barra notifications -->
+<div class="notifications">
+
+  <div class="round-container">
+    <i class="fa-regular fa-bell-slash"></i>
+  </div>
+
+  <div class="new-notifications">
+    <h6>Ricevi notifiche di nuovi messaggi</h6>
+    <span>Attiva notifiche desktop</span>
+  </div>
+
+</div>
+
+
+
+
+
+<!-- Barra ricerca chat -->
+<div class="search-bar">
+
+  <div class="label">
+    <label for="search-chat">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </label>
+  </div>
+
+  <div class="input">
+    <input type="text" v-model.trim="searchChat" 
+    id="search-chat" 
+    placeholder="Cerca o inizia una nuova chat"
+    :input="searchFilter()">
+  </div>
+  
+</div>
+
+
+
+<!-- Lista delle conversazioni -->
+<div class="conversations">
+
+  
+<div class="conversation-card"
+     v-for="(contact, index) in contacts"
+     :class="{'active' : index === activeConversation}"
+     @click="activeConversation = index"
+     v-show="contact.visible"
+>
+
+  <div class="round-container">
+    <img :src="'../img/avatar' + contact.avatar + '.jpg'" alt="avatar 1">
+  </div>
+
+  <div class="user-info">
+    <span class="user-name">{{contact.name}}</span>
+    <span>{{getLastMsg(index)}}</span>
+  </div>
+
+  <div class="msg-hour">
+    <span>12:00</span>
+  </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- Parte destra dell'app -->
+<div class="right-content" :class="{blur : isNewContact}">
+
+
+  <!-- Tuta la parte destra dell'app viene costantemente monitorata e aggiornata in base alla chat selezionta -->
+  <div class="conversation-container" 
+       v-for="(contact, index) in contacts"
+       v-show="index === activeConversation"
+  >
+
+    <!-- Preso in prestito la parte equivalente del lato sinistro, cambiando soltanto le icone -->
+    <div class="user-bar">
+
+    <div class="user">
+  
+      <div class="round-container">
+        <img :src="'../img/avatar' + contact.avatar + '.jpg'" alt="User Avatar">
+      </div>
+  
+      <div class="user-info">
+        <span class="user-name">{{contact.name}}</span>
+        <span>Ultimo accesso oggi alle 12:00</span>
+      </div>
+  
+    </div>
+  
+  
+    <div class="actions">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-paperclip"></i>
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+  
+  </div>
+
+  <!-- Macro contenitore di tutta la conversazione -->
+  <div class="msg-container" @click.self.stop="clearAllOptions()">
+
+    <!-- Il singolo messaggio con dentro lo span che starà a sinistra o a destra in base a se il messaggio è inviato o ricevuto -->
+    <div class="msg"
+    v-for="(message, index) in contact.messages"
+    >
+    <div :class="[ message.status === 'sent' ? msgSentClass : msgReceivedClass]">
+          <span class="msg-content">{{message.message}}</span>
+
+          <div class="options">
+
+            <div class="delete-menu" v-if="message.isOptionsVisible">
+            <ul>
+              <li>Metti mi piace</li>
+              <li
+              @click="deleteMsg(index)"
+              >Cancella questo messaggio</li>
+            </ul>
+            </div>
+
+            <span class="delete" @click="showOnlyOneDelete(message, index)">
+              <i class="fa-solid fa-chevron-down" v-if="!message.isOptionsVisible"></i>
+              <i class="fa-solid fa-chevron-up" v-else></i>
+            </span>
+            <span class="time-stamp">{{getOnlyHours(message)}}</span>
+
+          </div>
+    </div>
+     
+    </div>
+
+
+
+  </div>
+
+  <!-- Input per scrivere un nuovo messaggio -->
+  <div class="new-message">
+
+    <div class="emojis"><i class="fa-regular fa-face-smile"></i></div>
+    <input type="text" placeholder="Scrivi un messaggio" v-model="newMsg"
+    @keydown.enter="addUserMessage()"
+    >
+    <div class="audio-message"><i class="fa-solid fa-microphone"></i></div>
+  </div>
+
+  </div>
+  
+</div>
+
+
+
+
+</div>
+
+
+</body>
+</html>
