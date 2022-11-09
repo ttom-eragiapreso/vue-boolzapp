@@ -212,6 +212,7 @@ ul li:hover {
 .conversations {
   /* overflow: auto; */
   overflow-y: scroll;
+  overflow-x: hidden;
   height: calc(100% - 140px);
   background-color: white;
   border-bottom-left-radius: 10px;
@@ -224,6 +225,16 @@ ul li:hover {
   padding: 5px;
   border-bottom: 1px solid #bababa4c;
   cursor: pointer;
+  transition: all .5s ease;
+  position: relative;
+}
+
+.conversation-card.sinistra {
+  transform: translateX(-55px);
+}
+
+.conversation-card.destra {
+  transform: translateX(0);
 }
 
 .conversation-card:hover {

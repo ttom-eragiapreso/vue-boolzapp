@@ -217,7 +217,16 @@ createApp({
       // Campo di input per ascoltare il nome del nuovo contatto
       newContactName: "",
       // Flag per mostrare o meno il campo di creazione della nuova chat
-      isNewContact: false
+      isNewContact: false,
+      // Variabile per storare la posizione sulle X al momento del touchStart
+      touchStartX: 0,
+      // Variabile per storare la posizione sulle X al momento del touchEnd
+      touchEndX: 0,
+      // Variabile per storare la direzione in cui si ha fatto swipe
+      touchDirection: "",
+      // Variabile per determinare quale classe assegnare in base allo swipe
+      conversationSwipeLeftClass: 'sinistra',
+      conversationSwipeRightClass: 'destra',
     }
   },
 
@@ -334,7 +343,7 @@ createApp({
     clearAllOptions(){
       this.contacts.forEach(contact => contact.messages.forEach(message => message.isOptionsVisible = false))
     },
-
+    // Funzione che mi cancella la conversazione al doppio click
     deleteChat(index){
       if(this.contacts.length >= 2){
         this.contacts.splice(index, 1)
@@ -342,8 +351,26 @@ createApp({
       }else {
         alert("Non puoi eliminare il tuo ultimo contatto, aggiungine di nuovi cliccando sui tre puntini alla destra del tuo nome")
       }
+    },
+    // Funzione per mostrare l'opzione di cancellare la chat su schermo touch
+    touchStart(e){
+     this.touchStartX = e.changedTouches[0].screenX
+    },
+
+    touchEnd(contact, e){
+      this.touchEndX = e.changedTouches[0].screenX
+      this.checkDirection(this.touchStartX, this.touchEndX, contact)
+    },
+
+    checkDirection(start, end, contact){
+
+      if (end < start) this.touchDirection = "sinistra"
+      if (end > start) this.touchDirection = "destra"
+
+
+        }
     }
-  }
+  
 
 
 

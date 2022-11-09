@@ -101,9 +101,12 @@
   
 <div class="conversation-card"
      v-for="(contact, index) in contacts"
-     :class="{'active' : index === activeConversation}"
+     :class="{'active' : index === activeConversation,
+     'sinistra' : touchDirection == 'sinistra', 'destra' : touchDirection == 'destra' }"
      @click="activeConversation = index"
      @dblclick="deleteChat(index)"
+     @touchstart="touchStart($event)"
+     @touchend="touchEnd(contact, $event)"
      v-show="contact.visible"
 >
 
