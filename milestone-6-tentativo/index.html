@@ -164,7 +164,7 @@
   </div>
 
   <!-- Macro contenitore di tutta la conversazione -->
-  <div class="msg-container" @click.self.stop="clearAllOptions()">
+  <div class="msg-container" @click.self.stop="clearAllOptions()" :class="{blur : isNewContact}">
 
     <!-- Il singolo messaggio con dentro lo span che starà a sinistra o a destra in base a se il messaggio è inviato o ricevuto -->
     <div class="msg"

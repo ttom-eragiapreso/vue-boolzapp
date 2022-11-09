@@ -62,8 +62,9 @@ ul li:hover {
   height: 100%;
 }
 
-.left-content.blur, .right-content.blur {
+.msg-container.blur {
   filter: blur(4px);
+  /* transform: scale(1.01, 1.04); */
 }
 
 .left-content {
@@ -274,6 +275,7 @@ ul li:hover {
   height: calc(100% - 110px);
   /* overflow: auto; */
   overflow-y: scroll;
+  transition: all .2s ease;
 }
 
 .new-message {
