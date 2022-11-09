@@ -103,6 +103,7 @@
      v-for="(contact, index) in contacts"
      :class="{'active' : index === activeConversation}"
      @click="activeConversation = index"
+     @dblclick="deleteChat(index)"
      v-show="contact.visible"
 >
 

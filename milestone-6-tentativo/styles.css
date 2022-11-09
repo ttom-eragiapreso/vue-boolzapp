@@ -17,12 +17,12 @@ img {
 }
 
 header {
-  height: 15%;
+  height: 10%;
   background-color: #01a093;
 }
 
 main {
-  height: 85%;
+  height: 90%;
   background-color: #dfdfdb;
 }
 
@@ -58,13 +58,11 @@ ul li:hover {
 }
 
 .left-content, .right-content {
-  /* border: 1px solid black; */
   height: 100%;
 }
 
 .msg-container.blur {
   filter: blur(4px);
-  /* transform: scale(1.01, 1.04); */
 }
 
 .left-content {

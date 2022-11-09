@@ -333,6 +333,15 @@ createApp({
     // Utility per eliminare tutte le tendine aperte cliccando ovunque nella conversazione
     clearAllOptions(){
       this.contacts.forEach(contact => contact.messages.forEach(message => message.isOptionsVisible = false))
+    },
+
+    deleteChat(index){
+      if(this.contacts.length >= 2){
+        this.contacts.splice(index, 1)
+        console.log(this.contacts.length)
+      }else {
+        alert("Non puoi eliminare il tuo ultimo contatto, aggiungine di nuovi cliccando sui tre puntini alla destra del tuo nome")
+      }
     }
   }
 
