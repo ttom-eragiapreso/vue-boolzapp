@@ -295,6 +295,13 @@ createApp({
         this.contacts[this.activeConversation].messages.splice(index, 1);
 
       }, 80)
+    },
+    // Funzione che mi assicura che posso aprire soltanto un menù a tendina alla volta
+    showOnlyOneDelete(index){
+      //Prima itero tra tutti i messaggi e setto la flag che determina la visualizzazione su false
+      this.contacts.forEach(contact => contact.messages.forEach(message => message.isOptionsVisible = false))
+      //Poi prendo la conversazione dove sono, all'indice del messaggio sul quale ho cliccato che mi passo come parametro e a quel messaggi setto la flag true
+      this.contacts[this.activeConversation].messages[index].isOptionsVisible = true
     }
 
   }

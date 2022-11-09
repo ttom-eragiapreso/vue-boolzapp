@@ -165,9 +165,8 @@
           <span class="msg-content">{{message.message}}</span>
 
           <div class="options">
-            <div class="delete-menu"
-            v-if="message.isOptionsVisible"
-            >
+
+            <div class="delete-menu" v-if="message.isOptionsVisible">
             <ul>
               <li>Metti mi piace</li>
               <li
@@ -177,16 +176,13 @@
             </div>
 
             <span class="delete"
-                  @click="message.isOptionsVisible = !message.isOptionsVisible"
+                  @click="showOnlyOneDelete(index)"
             >
-              <i class="fa-solid fa-chevron-down"
-              v-if="!message.isOptionsVisible"
-              ></i>
-              <i class="fa-solid fa-chevron-up"
-              v-else
-              ></i>
+              <i class="fa-solid fa-chevron-down" v-if="!message.isOptionsVisible"></i>
+              <i class="fa-solid fa-chevron-up" v-else></i>
             </span>
             <span class="time-stamp">{{getOnlyHours(message)}}</span>
+
           </div>
     </div>
      

@@ -182,8 +182,8 @@ ul li:hover {
 /* Card template della conversation */
 
 .conversations {
-  overflow: auto;
-  /* overflow-y: scroll; */
+  /* overflow: auto; */
+  overflow-y: scroll;
   height: calc(100% - 140px);
   background-color: white;
   border-bottom-left-radius: 10px;
