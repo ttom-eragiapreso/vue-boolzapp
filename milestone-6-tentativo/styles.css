@@ -237,6 +237,20 @@ ul li:hover {
   transform: translateX(0);
 }
 
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 3px 1px #ffeaeab3;
+  height: 100%;
+  aspect-ratio: 1/1;
+  font-size: 1.8rem;
+  background-color: rgb(255, 132, 107);
+  position: absolute;
+  top: 0;
+  right: -59px;
+}
+
 .conversation-card:hover {
   background-color: #eceeee;
 }
