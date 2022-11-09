@@ -363,9 +363,9 @@ createApp({
     },
 
     checkDirection(start, end, contact){
-
-      if (end < start) contact.touchDirection = "sinistra"
-      if (end > start) contact.touchDirection = "destra"
+      this.contacts.forEach(contact => contact.touchDirection = 'destra')
+      if (end < start && start - end > 15) contact.touchDirection = "sinistra"
+      if (end > start && end - start > 15) contact.touchDirection = "destra"
 
 
         }
